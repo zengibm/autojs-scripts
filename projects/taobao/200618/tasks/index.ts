@@ -1,11 +1,11 @@
-import { boundsClick } from '../../../common/click-ele-bounds';
-import { delayCheck } from '../../../common/delay-check';
-import { collection2array } from '../../../common/floaty-children';
-import { killApp } from '../../../common/kill-app';
-import { loopRunTask } from '../../../common/loop-run-task';
-import { openTaoBaoMain, taobaoId } from '../../../common/open-app';
-import { retryRun } from '../../../common/retry-run';
-import { tl } from '../../../common/toast';
+import { boundsClick } from '../../../utils/click-ele-bounds';
+import { delayCheck } from '../../../utils/delay-check';
+import { collection2array } from '../../../utils/floaty-children';
+import { killApp } from '../../../utils/kill-app';
+import { loopRunTask } from '../../../utils/loop-run-task';
+import { openTaoBaoMain, taobaoId } from '../../../utils/open-app';
+import { retryRun } from '../../../utils/retry-run';
+import { tl } from '../../../utils/toast';
 
 function goToPage() {
   tl('尝试进入 [瓜分10亿] 页面');

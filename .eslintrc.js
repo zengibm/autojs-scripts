@@ -26,6 +26,10 @@ module.exports = {
     swipe: false,
     gesture: false,
     home: false,
+    storages: false,
+    engines: false,
+    files: false,
+    http: false,
 
     context: false,
     importClass: false,
@@ -72,5 +76,6 @@ module.exports = {
         allowArgumentsExplicitlyTypedAsAny: true,
       },
     ],
+    
   },
 };

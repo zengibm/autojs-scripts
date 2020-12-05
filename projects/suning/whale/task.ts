@@ -1,10 +1,10 @@
-import { boundsClick } from '../../common/click-ele-bounds';
-import { delayCheck } from '../../common/delay-check';
-import { collection2array } from '../../common/floaty-children';
-import { getTaskDelay } from '../../common/get-task-count';
-import { loopCheck } from '../../common/loop-run-task';
-import { scrollIn, scrollPage } from '../../common/scroll';
-import { tl } from '../../common/toast';
+import { boundsClick } from '../../utils/click-ele-bounds';
+import { delayCheck } from '../../utils/delay-check';
+import { collection2array } from '../../utils/floaty-children';
+import { getTaskDelay } from '../../utils/get-task-count';
+import { loopCheck } from '../../utils/loop-run-task';
+import { scrollIn, scrollPage } from '../../utils/scroll';
+import { tl } from '../../utils/toast';
 import { checkIsInTaskPanel, reopenTaskPanel } from './task-panel';
 
 function getLastResult() {

@@ -1,4 +1,4 @@
-import { collection2array } from '../../common/floaty-children';
+import { collection2array } from '../../utils/floaty-children';
 
 function checkIsInTaskPanel(): boolean {
   return !!textContains('连续签到得鲸币').findOnce();

@@ -1,4 +1,4 @@
-import { getUiObject } from '../../../common/ui-object';
+import { getUiObject } from '../../../utils/ui-object';
 
 function checkVerification(): boolean {
   return !!getUiObject('请完成下方拼图验证');

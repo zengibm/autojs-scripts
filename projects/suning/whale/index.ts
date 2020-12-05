@@ -1,7 +1,7 @@
-import { jumpTop } from '../../common/jump-top';
-import { killApp } from '../../common/kill-app';
-import { suningApplicationId } from '../../common/open-app';
-import { retryRun } from '../../common/retry-run';
+import { jumpTop } from '../../utils/jump-top';
+import { killApp } from '../../utils/kill-app';
+import { suningApplicationId } from '../../utils/open-app';
+import { retryRun } from '../../utils/retry-run';
 import { collect } from './collect';
 import { doExclusive } from './exclusive-reward';
 import { openWhale } from './open';

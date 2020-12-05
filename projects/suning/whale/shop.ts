@@ -1,9 +1,9 @@
-import { boundsClick } from '../../common/click-ele-bounds';
-import { delayCheck } from '../../common/delay-check';
-import { collection2array } from '../../common/floaty-children';
-import { getTaskCount } from '../../common/get-task-count';
-import { scrollIn, scrollPage } from '../../common/scroll';
-import { tl } from '../../common/toast';
+import { boundsClick } from '../../utils/click-ele-bounds';
+import { delayCheck } from '../../utils/delay-check';
+import { collection2array } from '../../utils/floaty-children';
+import { getTaskCount } from '../../utils/get-task-count';
+import { scrollIn, scrollPage } from '../../utils/scroll';
+import { tl } from '../../utils/toast';
 
 function checkIsFinished() {
   return (

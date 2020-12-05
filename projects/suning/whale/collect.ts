@@ -1,5 +1,5 @@
-import { boundsClick } from '../../common/click-ele-bounds';
-import { tl } from '../../common/toast';
+import { boundsClick } from '../../utils/click-ele-bounds';
+import { tl } from '../../utils/toast';
 import { openWhale } from './open';
 
 function collect(): void {

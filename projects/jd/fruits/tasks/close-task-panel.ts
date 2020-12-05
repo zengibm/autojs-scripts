@@ -1,4 +1,4 @@
-import { boundsClick } from '../../../common/click-ele-bounds';
+import { boundsClick } from '../../../utils/click-ele-bounds';
 
 function getTaskPanelCloseEle() {
   try {

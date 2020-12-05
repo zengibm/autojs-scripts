@@ -1,10 +1,10 @@
-import { boundsClick } from '../../../common/click-ele-bounds';
-import { delayCheck } from '../../../common/delay-check';
-import { killApp } from '../../../common/kill-app';
-import { jdApplicationId, openJDMain } from '../../../common/open-app';
-import { retryRun } from '../../../common/retry-run';
-import { myScroll, scrollIn } from '../../../common/scroll';
-import { tl } from '../../../common/toast';
+import { boundsClick } from '../../../utils/click-ele-bounds';
+import { delayCheck } from '../../../utils/delay-check';
+import { killApp } from '../../../utils/kill-app';
+import { jdApplicationId, openJDMain } from '../../../utils/open-app';
+import { retryRun } from '../../../utils/retry-run';
+import { myScroll, scrollIn } from '../../../utils/scroll';
+import { tl } from '../../../utils/toast';
 import { closeTaskPanel } from './close-task-panel';
 
 function goToPage() {

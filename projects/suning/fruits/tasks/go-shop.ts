@@ -1,9 +1,9 @@
-import { delayCheck } from '../../../common/delay-check';
-import { getTaskDelay } from '../../../common/get-task-count';
-import { checkInScreen } from '../../../common/in-screen';
-import { scrollIn } from '../../../common/scroll';
-import { tl } from '../../../common/toast';
-import { getUiObject } from '../../../common/ui-object';
+import { delayCheck } from '../../../utils/delay-check';
+import { getTaskDelay } from '../../../utils/get-task-count';
+import { checkInScreen } from '../../../utils/in-screen';
+import { scrollIn } from '../../../utils/scroll';
+import { tl } from '../../../utils/toast';
+import { getUiObject } from '../../../utils/ui-object';
 import { pressClose } from './press-close';
 
 function isInTask() {

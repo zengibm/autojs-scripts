@@ -1,12 +1,12 @@
-import { boundsClick } from '../../../common/click-ele-bounds';
-import { delayCheck } from '../../../common/delay-check';
-import { collection2array } from '../../../common/floaty-children';
-import { floatyDebug } from '../../../common/floaty-debug';
-import { killApp } from '../../../common/kill-app';
-import { openSuning, suningApplicationId } from '../../../common/open-app';
-import { retryRun } from '../../../common/retry-run';
-import { scrollIn, scrollOut, scrollPage } from '../../../common/scroll';
-import { tl } from '../../../common/toast';
+import { boundsClick } from '../../../utils/click-ele-bounds';
+import { delayCheck } from '../../../utils/delay-check';
+import { collection2array } from '../../../utils/floaty-children';
+import { floatyDebug } from '../../../utils/floaty-debug';
+import { killApp } from '../../../utils/kill-app';
+import { openSuning, suningApplicationId } from '../../../utils/open-app';
+import { retryRun } from '../../../utils/retry-run';
+import { scrollIn, scrollOut, scrollPage } from '../../../utils/scroll';
+import { tl } from '../../../utils/toast';
 
 function runTask(position: { x: number; y: number }, delay = 10) {
   click(position.x, position.y);

@@ -1,6 +1,6 @@
-import { delayCheck } from '../../../common/delay-check';
-import { getCaptureImage } from '../../../common/image';
-import { tl } from '../../../common/toast';
+import { delayCheck } from '../../../utils/delay-check';
+import { getCaptureImage } from '../../../utils/image';
+import { tl } from '../../../utils/toast';
 import { collectAnimal } from './animal';
 import { getPosition } from './find-click';
 import { pressClose } from './press-close';

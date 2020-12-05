@@ -1,4 +1,4 @@
-import { suningApplicationId } from '../../../common/open-app';
+import { suningApplicationId } from '../../../utils/open-app';
 
 function throwWhenNotInPackage(): boolean {
   return currentPackage() === suningApplicationId;

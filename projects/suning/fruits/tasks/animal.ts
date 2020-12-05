@@ -1,5 +1,5 @@
-import { delayCheck } from '../../../common/delay-check';
-import { tl } from '../../../common/toast';
+import { delayCheck } from '../../../utils/delay-check';
+import { tl } from '../../../utils/toast';
 import { findAndClick } from './find-click';
 import { pressClose } from './press-close';
 import { throwVerification } from './verification-check';

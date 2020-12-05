@@ -1,6 +1,6 @@
-import { delayCheck } from '../../common/delay-check';
-import { openSuning } from '../../common/open-app';
-import { tl } from '../../common/toast';
+import { delayCheck } from '../../utils/delay-check';
+import { openSuning } from '../../utils/open-app';
+import { tl } from '../../utils/toast';
 
 function openWhale(): void {
   app.startActivity('settings');

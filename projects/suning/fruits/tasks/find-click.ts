@@ -1,5 +1,5 @@
-import { floatyDebug } from '../../../common/floaty-debug';
-import { getCaptureImage } from '../../../common/image';
+import { floatyDebug } from '../../../utils/floaty-debug';
+import { getCaptureImage } from '../../../utils/image';
 
 function getPosition(
   screenImage: Image,

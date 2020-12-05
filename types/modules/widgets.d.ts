@@ -96,6 +96,9 @@ declare interface UiObject {
     findByText(str: string): UiCollection;
     findOne(selector): UiObject | null;
     find(selector): UiCollection;
+    setTitles: Function;
+    setupWithViewPager: Function;
+    setupWithDrawer: Function;
     visibility: 0 | 8;
     setTextColor(text: number): boolean;
 }

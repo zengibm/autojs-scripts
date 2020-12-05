@@ -1,186 +1,101 @@
-import './head';
+'ui';
 
-import { checkFloaty, openFloatySetting } from '../../common/floaty-permission';
-import { getCaptureImage } from '../../common/image';
-import { killApp } from '../../common/kill-app';
-import { muteRestoreMusic } from '../../common/mute';
-import { jdApplicationId, suningApplicationId } from '../../common/open-app';
-import { tl } from '../../common/toast';
-import { runWithRetry as JDRun } from '../../jd/fruits/tasks';
-import { runWithRetry as SNRun } from '../../suning/fruits/tasks';
-import {
-  loopCollect as SNLoopCollect,
-  runWithRetry as SNWhaleRun,
-} from '../../suning/whale';
 import layout from './layout.xml';
 
-layout();
+class Home {
+  public static store: Storage;
 
-enum Status {
-  visible = 0,
-  invisible = 8,
-}
+  public static logo: Storage;
 
-const status: { [key: string]: boolean } = {};
+  public static title: Storage;
 
-const btns = [
-  {
-    id: 'runALLBtn',
-    type: 'all',
-  },
-  {
-    id: 'runJDBtn',
-    type: 'jd',
-  },
-  {
-    id: 'runSNBtn',
-    type: 'sn',
-  },
-];
+  public static ymhost = 'http://abc.yimigw.com';
 
-function renderAccessibility(type: boolean) {
-  if (type) {
-    ui.accessibilityStatusCheck.visibility = Status.invisible;
-    ui.accessibilityStatusSuccess.visibility = Status.visible;
-    ui.waring.visibility = Status.invisible;
-  } else {
-    ui.accessibilityStatusCheck.visibility = Status.visible;
-    ui.accessibilityStatusSuccess.visibility = Status.invisible;
-    ui.waring.visibility = Status.visible;
-  }
-}
+  public static state = {
+    logo: '32',
+    validation_url: 'http://ysjm.yimigw.com',
+    names: '云尚聚米',
+    name_rw: '云尚聚米(内部版)',
+    logourl: 'https://www.baidu.com/img/bd_logo1.png',
+    // logourl: images.read('./assets/gakki.png'),
+    jiaocheng_h: 0,
+    product_id: 3,
+    my_color: '#48b498',
+    console_png: 'http://abc.yimigw.com/runjs/console_ysjm.jpg?1',
+  };
 
-function renderFloaty(type: boolean | 'hidden') {
-  if (type === 'hidden') {
-    ui.floatyBtn.visibility = Status.invisible;
-    ui.floatyStatusCheck.visibility = Status.invisible;
-    ui.floatyStatusSuccess.visibility = Status.invisible;
-  } else if (type === true) {
-    ui.floatyBtn.visibility = Status.visible;
-    ui.floatyStatusCheck.visibility = Status.invisible;
-    ui.floatyStatusSuccess.visibility = Status.visible;
-  } else if (type === false) {
-    ui.floatyBtn.visibility = Status.visible;
-
-    ui.floatyStatusCheck.visibility = Status.visible;
-    ui.floatyStatusSuccess.visibility = Status.invisible;
-  }
-}
-
-function render() {
-  if (!status.accessibility) {
-    renderAccessibility(false);
-    renderFloaty('hidden');
-  } else {
-    renderAccessibility(true);
-    renderFloaty(status.floaty);
-  }
-
-  if (status.accessibility && status.floaty) {
-    btns.forEach(({ id }) => {
-      ui[id].visibility = Status.visible;
-    });
-  } else {
-    btns.forEach(({ id }) => {
-      ui[id].visibility = Status.invisible;
-    });
-  }
-}
-
-async function checkStatus() {
-  status.accessibility = !!auto.service;
-  status.floaty = checkFloaty();
-
-  render();
-}
-
-let threadCache: threads.Thread | null = null;
-
-function run(type: string) {
-  // 停止上次可能在运行的脚本
-  if (threadCache) {
-    tl('停止上次残留中....');
-    threadCache.interrupt();
-    threadCache = null;
-  }
-
-  try {
-    threadCache = threads.start(() => {
-      const restoreMusic = muteRestoreMusic();
-
-      if (type === 'jd') {
-        JDRun();
-        killApp(jdApplicationId);
-      } else if (type === 'sn') {
-        getCaptureImage();
-        SNRun();
-        killApp(suningApplicationId);
-      } else if (type === 'snWhale') {
-        SNWhaleRun();
-        killApp(suningApplicationId);
-      } else if (type === 'snWhaleCollect') {
-        SNLoopCollect();
-      } else if (type === 'all') {
-        getCaptureImage();
-
-        JDRun();
-        killApp(jdApplicationId);
-
-        SNRun();
-        killApp(suningApplicationId);
-      } else {
-        restoreMusic();
-        throw new Error('启动任务失败, 无法识别任务类型');
+  public static loadjp(fileName: string, url: string) {
+    const isExist = files.exists(`/sdcard/cloud/${fileName}`);
+    if (!isExist) {
+      files.remove(`/sdcard/cloud/${fileName}`);
+      let isWrite = false;
+      threads.start(() => {
+        const r = http.get(url).body.bytes();
+        files.createWithDirs(`/sdcard/cloud/${fileName}`);
+        files.writeBytes(`/sdcard/cloud/${fileName}`, r);
+        isWrite = true;
+      });
+      // mylog('等待脚本启动');
+      while (!isWrite) {
+        /** */
       }
+    }
+  }
 
-      restoreMusic();
+  public static checkUpdate() {
+    threads.start(() => {});
+  }
+
+  public static initStorage() {
+    Home.store = storages.create('store');
+    Home.logo = storages.create('logo');
+    Home.title = storages.create('title');
+  }
+
+  public static initBaseUiStatus() {
+    ui.statusBarColor(this.state.my_color);
+  }
+
+  public static willMount() {
+    /** 页面渲染之前 */
+    this.initStorage();
+    this.initBaseUiStatus();
+  }
+
+  public static didMount() {
+    /** 页面渲染吗完成后 */
+    ui.viewpager.setTitles(['设置大全', '阅读平台', '综合任务', '任务平台']);
+    // 让滑动页面和标签栏联动
+    ui.tabs.setupWithViewPager(ui.viewpager);
+    // 让工具栏左上角可以打开侧拉菜单
+    ui.toolbar.setupWithDrawer(ui.drawer);
+
+    this.start();
+
+    ui.BtnExit.click(() => {
+      toast('退出程序');
+      engines.stopAll();
     });
-  } catch (e) {
-    tl(e);
+  }
+
+  public static start() {
+    ui.runBtn.click(() => {
+      /**
+       * 检测平台选择
+       */
+      toastLog('开始执行脚本');
+    });
+  }
+
+  public static render() {
+    layout(this.state);
+  }
+
+  public static run() {
+    this.willMount();
+    this.render();
+    this.didMount();
   }
 }
 
-events.on('exit', () => {
-  tl('结束运行');
-  threads.shutDownAll();
-});
-
-ui.accessibilityBtn.click(async () => {
-  await checkStatus();
-
-  if (!status.accessibility) {
-    app.startActivity({
-      action: 'android.settings.ACCESSIBILITY_SETTINGS',
-    });
-  }
-});
-
-ui.floatyBtn.click(async () => {
-  await checkStatus();
-
-  if (!status.floaty) {
-    openFloatySetting();
-  }
-});
-
-ui.emitter.on('resume', () => {
-  checkStatus();
-});
-
-ui.emitter.on('exit', () => {
-  threads.shutDownAll();
-});
-
-btns.forEach(({ id, type }) => {
-  ui[id].click(() => {
-    run(type);
-  });
-});
-
-ui.consoleBtn.click(() => {
-  app.startActivity('console');
-});
-
-setTimeout(() => {
-  checkStatus();
-}, 100);
+Home.run();

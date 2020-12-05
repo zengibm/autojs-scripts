@@ -1,16 +1,16 @@
-import { boundsClick } from '../../../common/click-ele-bounds';
-import { delayCheck, delayRun } from '../../../common/delay-check';
-import { collection2array } from '../../../common/floaty-children';
-import { floatyDebug } from '../../../common/floaty-debug';
-import { getTaskCount } from '../../../common/get-task-count';
-import { checkInScreen } from '../../../common/in-screen';
-import { killApp } from '../../../common/kill-app';
-import { loopRunTask } from '../../../common/loop-run-task';
-import { jdApplicationId, openJDMain } from '../../../common/open-app';
-import { retryRun } from '../../../common/retry-run';
-import { myScroll, scrollIn } from '../../../common/scroll';
-import { tl } from '../../../common/toast';
-import { getUiObject } from '../../../common/ui-object';
+import { boundsClick } from '../../../utils/click-ele-bounds';
+import { delayCheck, delayRun } from '../../../utils/delay-check';
+import { collection2array } from '../../../utils/floaty-children';
+import { floatyDebug } from '../../../utils/floaty-debug';
+import { getTaskCount } from '../../../utils/get-task-count';
+import { checkInScreen } from '../../../utils/in-screen';
+import { killApp } from '../../../utils/kill-app';
+import { loopRunTask } from '../../../utils/loop-run-task';
+import { jdApplicationId, openJDMain } from '../../../utils/open-app';
+import { retryRun } from '../../../utils/retry-run';
+import { myScroll, scrollIn } from '../../../utils/scroll';
+import { tl } from '../../../utils/toast';
+import { getUiObject } from '../../../utils/ui-object';
 
 function goToPage() {
   tl('尝试进入 [叠蛋糕] 页面');

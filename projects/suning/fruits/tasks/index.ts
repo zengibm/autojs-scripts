@@ -1,8 +1,8 @@
-import { delayCheck } from '../../../common/delay-check';
-import { killApp } from '../../../common/kill-app';
-import { openSuning, suningApplicationId } from '../../../common/open-app';
-import { retryRun } from '../../../common/retry-run';
-import { tl } from '../../../common/toast';
+import { delayCheck } from '../../../utils/delay-check';
+import { killApp } from '../../../utils/kill-app';
+import { openSuning, suningApplicationId } from '../../../utils/open-app';
+import { retryRun } from '../../../utils/retry-run';
+import { tl } from '../../../utils/toast';
 import { addAnimals, collectAnimal } from './animal';
 import { collectCoin } from './coin';
 import { goShop } from './go-shop';
